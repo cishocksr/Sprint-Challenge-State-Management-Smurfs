@@ -7,32 +7,48 @@ const SmurfForm = props => {
     height: ""
   });
 
-  const changeHandler = e => {
+  const handleChange = e => {
     setSmurfFormData({
-      ...setSmurfFormData,
+      ...smurfFormData,
       [e.target.name]: e.target.value
     });
   };
 
-  const submitHandler = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    e.target.reset();
-    props.submitForm(smurfFormData);
+    props.smurfSubmit(smurfFormData);
   };
 
   return (
-    <form onSubmi={submitHandler}>
+    <form onSubmit={handleSubmit}>
+      console.log(onSubmit);
       <label>
         Name:
-        <input type="text" id="name" name="name" onChange={changeHandler} />
+        <input
+          type="text"
+          name="name"
+          value={smurfFormData.name}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Age:
-        <input type="number" id="age" name="age" onChange={changeHandler} />
+        <input
+          type="number"
+          name="age"
+          value={smurfFormData.age}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Height:
-        <input type="text" id="height" name="height" onChange={changeHandler} />
+        <input
+          type="text"
+          id="inputHeight"
+          name="height"
+          value={smurfFormData.height}
+          onChange={handleChange}
+        />
       </label>
       <button>Add Smurf</button>
     </form>

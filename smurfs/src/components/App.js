@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { smurfData } from "../actions";
+import { smurfData, smurfSubmit } from "../actions";
 import SmurfForm from "./SmurfForm";
 import "./App.css";
 import SmurfsList from "./SmurfsList";
-import Smurfs from "./Smurfs";
 
 const App = props => {
   useEffect(() => {
@@ -16,7 +15,7 @@ const App = props => {
     <div className="App">
       <h1>SMURFS! 2.0 W/ Redux</h1>
       <SmurfsList data={props.data} />
-      {/* <SmurfForm submitForm={props.submitForm} /> */}
+      <SmurfForm smurfSubmit={props.smurfSubmit} />
     </div>
   );
 };
@@ -29,4 +28,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { smurfData })(App);
+export default connect(mapStateToProps, { smurfData, smurfSubmit })(App);
